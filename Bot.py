@@ -12,6 +12,8 @@ import json
 BeetStatus = ["Cuppa War", "KFC WARZONE", "Howerd Stern Simulator", "Boxing Champs", 
 "UFC 4", "Cuppa Killa", "Modern Cuppa Warfare", "Anime Princess Palace 2", "BEET EXILES", "DOD", "Finding Mario Judah"]
 
+Token = os.environ.get('SECRET_TOKEN')
+
 if __name__ == "__main__":
 
      def get_prefix(client, message):
@@ -77,5 +79,5 @@ if __name__ == "__main__":
                client.load_extension(f'cogs.{filename[:-3]}')
      
 
-     client.run("ODI1NTY3MjM2OTQwNDk2OTI3.YF_zZw.M10yW6QxcW_yOYc-x3IH4Oue0-c")
+     client.run(Token)
 
