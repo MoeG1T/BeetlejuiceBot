@@ -59,12 +59,14 @@ if __name__ == "__main__":
           Beet_Messages.start()
           print("Cuppa Army General At Your Service")
 
-     @tasks.loop(minutes=60)
+     @tasks.loop(minutes=120)
      async def Beet_Messages():
-          channel = client.get_channel(825575069019144195)
           try:
-               with open("BeetRandomMsgz.txt","r") as f:
-                    await channel.send(random.choice(f.read().splitlines()))
+               for guild in client.guilds:
+                    for channel in guild.channels:
+                         if str(channel) == "general":
+                              with open("BeetRandomMsgz.txt","r") as f:
+                                   await channel.send(random.choice(f.read().splitlines()))
           except (OSError, IOError) as e:
                print(e)
 
