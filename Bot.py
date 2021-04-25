@@ -9,7 +9,7 @@ import random
 import json
 
 
-BeetStatus = ["Cuppa War", "KFC WARZONE", "Howerd Stern Simulator", "Boxing Champs", 
+BeetStatus = ["Cuppa War", "CUPPA WARZONE", "Howerd Stern Simulator", "Boxing Champs", 
 "UFC 4", "Cuppa Killa", "Modern Cuppa Warfare", "Anime Princess Palace 2", "BEET EXILES", "DOD", "Finding Mario Judah"]
 
 Token = os.environ.get('SECRET_TOKEN')
@@ -56,7 +56,17 @@ if __name__ == "__main__":
      @client.event
      async def on_ready():
           change_game_status.start()
+          Beet_Messages.start()
           print("Cuppa Army General At Your Service")
+
+     @tasks.loop(minutes=60)
+     async def Beet_Messages():
+          channel = client.get_channel(825575069019144195)
+          try:
+               with open("BeetRandomMsgz.txt","r") as f:
+                    await channel.send(random.choice(f.read().splitlines()))
+          except (OSError, IOError) as e:
+               print(e)
 
      @tasks.loop(minutes = 400)
      async def change_game_status():
