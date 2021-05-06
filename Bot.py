@@ -12,6 +12,8 @@ import json
 BeetStatus = ["Cuppa War", "CUPPA WARZONE", "Howerd Stern Simulator", "Boxing Champs", 
 "UFC 4", "Cuppa Killa", "Modern Cuppa Warfare", "Anime Princess Palace 2", "BEET EXILES", "DOD", "Finding Mario Judah"]
 
+Greetings = ["Morning", "Hello", "Hi", "Hola", "hi", "Good Day", "Good Morning", "Hey Sir", "Hey Ma'am", "Ahoy Captain"]
+
 Token = os.environ.get('SECRET_TOKEN')
 
 if __name__ == "__main__":
@@ -69,6 +71,15 @@ if __name__ == "__main__":
                                    await channel.send(random.choice(f.read().splitlines()))
           except (OSError, IOError) as e:
                print(e)
+
+     @client.event
+     async def on_messages(message):
+          try:
+               if message.author == client.user:
+                    return
+                    
+               if any(word in message.content for word in Greetings):
+                    await message.channel.send(random.choice(Greetings))
 
      @tasks.loop(minutes = 400)
      async def change_game_status():

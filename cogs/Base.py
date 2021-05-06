@@ -10,18 +10,6 @@ class Basic(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-    
-    @commands.command(aliases=["Hello"])
-    async def Hi(self, ctx):
-        await ctx.send("Hi man")
-
-    @commands.command(aliases=["LordMoe", "lordMoe", " lordmoe", "Lordmoe"])
-    async def love(self, ctx):
-        await ctx.send("My Father and My Creator")
-
-    @commands.command(aliases=["Bye", "bye"])
-    async def _bye(self, ctx):
-        await ctx.send("See ya man")
 
     @commands.command()
     @commands.has_permissions(administrator=True, manage_roles=True)  
