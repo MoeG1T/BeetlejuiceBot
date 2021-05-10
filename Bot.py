@@ -20,7 +20,7 @@ GoodByes = ["Ciao", "Adios", "Goodbye", "Bye", "See ya", "cya", "Take Care"]
 Token = os.environ.get('SECRET_TOKEN')
 
 if __name__ == "__main__":
-
+     
      def get_prefix(client, message):
           with open("Prefixes.json", "r") as f:
                prefixes = json.load(f)
@@ -76,34 +76,37 @@ if __name__ == "__main__":
                print(e)
 
      @client.event
-     async def on_message(message):
-          
-          if message.author == client.user:
-               return
-
-          if message.author.bot: 
-               return
-                    
-          if any(word.lower() in message.content.lower() for word in Greetings):
-               time.sleep(2);
-               await message.channel.send(random.choice(Greetings))
-
-          if any(word.lower() in message.content.lower() for word in GoodByes):
-               time.sleep(2);
-               await message.channel.send(random.choice(GoodByes))
-
+     async def on_message(msg):
           try:
+          
+               if msg.author == client.user:
+                    return
+
+               if msg.author.bot: 
+                    return
+                    
+               if any(word.lower() in msg.content.lower() for word in Greetings):
+                    time.sleep(1)
+                    await msg.channel.send(random.choice(Greetings))
+
+               if any(word.lower() in msg.content.lower() for word in GoodByes):
+                    time.sleep(1)
+                    await msg.channel.send(random.choice(GoodByes))
+
+               swearwords= []
                with open("SwearWords.txt","r") as f:
                     swearwords = f.read().splitlines()
+
+               if any(word in msg.content.lower() for word in swearwords):
+                    with open("Replies.txt","r") as w:
+                         time.sleep(1)
+                         await msg.channel.send(random.choice(w.read().splitlines()))
           
           except (OSError, IOError) as e:
                print(e)
           
-          if any(word in message.content.lower() for word in swearwords):
-               with open("Replies.txt","r") as w:
-                    time.sleep(2);
-                    await message.channel.send(random.choice(w.read().splitlines()))
-
+          await client.process_commands(msg)
+          
      @tasks.loop(minutes = 400)
      async def change_game_status():
           await client.change_presence(status=discord.Status.online, activity=discord.Game(random.choice(BeetStatus)))
@@ -114,11 +117,14 @@ if __name__ == "__main__":
                await ctx.send("More Info Needed")
 
           elif isinstance(error, commands.MissingPermissions):
-               await ctx.send("Only Cuppa Generals Do This")
+               await ctx.send("Only Cuppa Generals Do This Command")
           
           elif isinstance(error, commands.CommandNotFound):
                await ctx.send("Command Doesn't Exist Pal")
 
+     @client.command()
+     async def ping(ctx):
+          await ctx.send("Pong!")
 
      for filename in os.listdir('./cogs'):
           if filename.endswith('.py'):
