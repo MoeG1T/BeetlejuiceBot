@@ -19,22 +19,23 @@ GoodByes = ["Ciao", "Adios", "Goodbye", "Bye", "See ya", "cya", "Take Care"]
 
 Token = os.environ.get('SECRET_TOKEN')
 
+def get_prefix(client, message):
+     with open("Prefixes.json", "r") as f:
+          prefixes = json.load(f)
+     
+     if (str(message.guild.id) in prefixes):
+          return prefixes[str(message.guild.id)]
+
+     else:
+          prefixes[str(message.guild.id)] = '!'
+
+          with open("Prefixes.json", 'w') as w:
+               json.dump(prefixes, w, indent = 4)
+               
+          return prefixes[str(message.guild.id)]
+
 if __name__ == "__main__":
      
-     def get_prefix(client, message):
-          with open("Prefixes.json", "r") as f:
-               prefixes = json.load(f)
-
-          if (str(message.guild.id) in prefixes):
-               return prefixes[str(message.guild.id)]
-
-          else:
-               prefixes[str(message.guild.id)] = '!'
-
-               with open("Prefixes.json", 'w') as w:
-                    json.dump(prefixes, w, indent = 4)
-               
-               return prefixes[str(message.guild.id)]
 
      client = commands.Bot(command_prefix = get_prefix)
 

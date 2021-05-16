@@ -6,7 +6,7 @@ import discord
 from discord.ext import commands
 import json
 
-class Basic(commands.Cog):
+class Admin(commands.Cog):
 
     def __init__(self, client):
         self.client = client
@@ -44,4 +44,4 @@ class Basic(commands.Cog):
         await ctx.send("Prefix Changed")
 
 def setup(client):
-    client.add_cog(Basic(client))
+    client.add_cog(Admin(client))
