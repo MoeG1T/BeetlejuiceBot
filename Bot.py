@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
      client = commands.Bot(command_prefix = get_prefix)
      
-     filenames = os.listdir(r"C:\Users\lubna\DiscordBot\data")
+     filenames = os.listdir("DiscordBot\data")
 
      @client.event
      async def on_guild_join(guild):
