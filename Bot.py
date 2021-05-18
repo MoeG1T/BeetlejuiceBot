@@ -38,6 +38,7 @@ if __name__ == "__main__":
      
 
      client = commands.Bot(command_prefix = get_prefix)
+     client.filepath = f"{os.path.split(os.getcwd())[0]}/{os.path.split(os.getcwd())[1]}"
 
      @client.event
      async def on_guild_join(guild):
@@ -71,7 +72,7 @@ if __name__ == "__main__":
                for guild in client.guilds:
                     for channel in guild.channels:
                          if str(channel) == "general":
-                              with open("BeetRandomMsgz.txt","r") as f:
+                              with open(f"data/BeetRandomMsgz.txt","r",encoding="utf-8") as f:
                                    await channel.send(random.choice(f.read().splitlines()))
           
           except (OSError, IOError) as e:
