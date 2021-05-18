@@ -32,13 +32,13 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def prefix(self, ctx, prefix):
-        with open("Prefixes.json", "r") as f:
+    async def ChangePrefix(self, ctx, prefix):
+        with open("Data\Prefixes.json", "r") as f:
             prefixes = json.load(f)
 
         prefixes[str(ctx.guild.id)] = prefix
 
-        with open("Prefixes.json", 'w') as w:
+        with open("Data\Prefixes.json", 'w') as w:
             json.dump(prefixes, w, indent = 4)
         
         await ctx.send("Prefix Changed")

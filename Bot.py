@@ -20,7 +20,7 @@ GoodByes = ["Ciao", "Adios", "Goodbye", "Bye", "See ya", "cya", "Take Care"]
 Token = os.environ.get('SECRET_TOKEN')
 
 def get_prefix(client, message):
-     with open("Prefixes.json", "r") as f:
+     with open("Data\Prefixes.json", "r") as f:
           prefixes = json.load(f)
      
      if (str(message.guild.id) in prefixes):
@@ -29,7 +29,7 @@ def get_prefix(client, message):
      else:
           prefixes[str(message.guild.id)] = '!'
 
-          with open("Prefixes.json", 'w') as w:
+          with open("Data\Prefixes.json", 'w') as w:
                json.dump(prefixes, w, indent = 4)
                
           return prefixes[str(message.guild.id)]
@@ -41,22 +41,22 @@ if __name__ == "__main__":
 
      @client.event
      async def on_guild_join(guild):
-          with open("Prefixes.json", "r") as f:
+          with open("Data\Prefixes.json", "r") as f:
                prefixes = json.load(f)
           
           prefixes[str(guild.id)] = '!'
 
-          with open("Prefixes.json", 'w') as w:
+          with open("Data\Prefixes.json", 'w') as w:
                json.dump(prefixes, w, indent = 4)
 
      @client.event
      async def on_guild_remove(guild):
-          with open("Prefixes.json", 'r') as f:
+          with open("Data\Prefixes.json", 'r') as f:
                prefixes = json.load(f)
           
           prefixes.pop(str(guild.id))
 
-          with open("Prefixes.json", 'w') as w:
+          with open("Data\Prefixes.json", 'w') as w:
                json.dump(prefixes, w, indent = 4)
                
      @client.event
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                for guild in client.guilds:
                     for channel in guild.channels:
                          if str(channel) == "general":
-                              with open("BeetRandomMsgz.txt","r") as f:
+                              with open("Data\BeetRandomMsgz.txt","r") as f:
                                    await channel.send(random.choice(f.read().splitlines()))
           except (OSError, IOError) as e:
                print(e)
@@ -79,7 +79,10 @@ if __name__ == "__main__":
      @client.event
      async def on_message(msg):
           try:
-          
+               if msg.content.startswith("!"):
+                    await client.process_commands(msg)
+                    return
+
                if msg.author == client.user:
                     return
 
@@ -95,11 +98,11 @@ if __name__ == "__main__":
                     await msg.channel.send(random.choice(GoodByes))
 
                swearwords= []
-               with open("SwearWords.txt","r") as f:
+               with open("Data\SwearWords.txt","r") as f:
                     swearwords = f.read().splitlines()
 
                if any(word in msg.content.lower() for word in swearwords):
-                    with open("Replies.txt","r") as w:
+                    with open("Data\Replies.txt","r") as w:
                          time.sleep(1)
                          await msg.channel.send(random.choice(w.read().splitlines()))
           
@@ -123,9 +126,8 @@ if __name__ == "__main__":
           elif isinstance(error, commands.CommandNotFound):
                await ctx.send("Command Doesn't Exist Pal")
 
-     @client.command()
-     async def ping(ctx):
-          await ctx.send("Pong!")
+          elif isinstance(error, commands.BadArgument):
+               await ctx.send("Invalid info provided")
 
      for filename in os.listdir('./cogs'):
           if filename.endswith('.py'):
