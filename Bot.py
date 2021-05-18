@@ -64,7 +64,7 @@ if __name__ == "__main__":
           Beet_Messages.start()
           print("Cuppa Army General At Your Service")
 
-     @tasks.loop(minutes=120)
+     @tasks.loop(minutes=300)
      async def Beet_Messages():
           try:
                for guild in client.guilds:
