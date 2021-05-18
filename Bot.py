@@ -71,8 +71,7 @@ if __name__ == "__main__":
                for guild in client.guilds:
                     for channel in guild.channels:
                          if str(channel) == "general":
-                              file = os.path.join(r"C:/Users/lubna/DiscordBot/data", "BeetRandomMsgz.txt")
-                              with open(file,"r") as f:
+                              with open("BeetRandomMsgz.txt","r") as f:
                                    await channel.send(random.choice(f.read().splitlines()))
           
           except (OSError, IOError) as e:
