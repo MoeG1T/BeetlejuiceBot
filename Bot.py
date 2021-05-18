@@ -20,7 +20,7 @@ GoodByes = ["Ciao", "Adios", "Goodbye", "Bye", "See ya", "cya", "Take Care"]
 Token = os.environ.get('SECRET_TOKEN')
 
 def get_prefix(client, message):
-     with open("Data\Prefixes.json", "r") as f:
+     with open("Data/Prefixes.json", "r") as f:
           prefixes = json.load(f)
      
      if (str(message.guild.id) in prefixes):
@@ -29,7 +29,7 @@ def get_prefix(client, message):
      else:
           prefixes[str(message.guild.id)] = '!'
 
-          with open("Data\Prefixes.json", 'w') as w:
+          with open("Data/Prefixes.json", 'w') as w:
                json.dump(prefixes, w, indent = 4)
                
           return prefixes[str(message.guild.id)]
@@ -41,22 +41,22 @@ if __name__ == "__main__":
 
      @client.event
      async def on_guild_join(guild):
-          with open("Data\Prefixes.json", "r") as f:
+          with open("Data/Prefixes.json", "r") as f:
                prefixes = json.load(f)
           
           prefixes[str(guild.id)] = '!'
 
-          with open("Data\Prefixes.json", 'w') as w:
+          with open("Data/Prefixes.json", 'w') as w:
                json.dump(prefixes, w, indent = 4)
 
      @client.event
      async def on_guild_remove(guild):
-          with open("Data\Prefixes.json", 'r') as f:
+          with open("Data/Prefixes.json", 'r') as f:
                prefixes = json.load(f)
           
           prefixes.pop(str(guild.id))
 
-          with open("Data\Prefixes.json", 'w') as w:
+          with open("Data/Prefixes.json", 'w') as w:
                json.dump(prefixes, w, indent = 4)
                
      @client.event
@@ -99,11 +99,11 @@ if __name__ == "__main__":
                     await msg.channel.send(random.choice(GoodByes))
 
                swearwords= []
-               with open("Data\SwearWords.txt","r") as f:
+               with open("Data/SwearWords.txt","r") as f:
                     swearwords = f.read().splitlines()
 
                if any(word in msg.content.lower() for word in swearwords):
-                    with open("Data\Replies.txt","r") as w:
+                    with open("Data/Replies.txt","r") as w:
                          time.sleep(1)
                          await msg.channel.send(random.choice(w.read().splitlines()))
           

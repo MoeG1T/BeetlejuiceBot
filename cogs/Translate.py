@@ -27,7 +27,7 @@ class Translate(commands.Cog):
 
     def encrypt(self, message):
         
-        with open("Data\Morse.json", "r") as f:
+        with open("Data/Morse.json", "r") as f:
             MORSE_CODE = json.load(f)
         
         Morse = ''
@@ -58,7 +58,7 @@ class Translate(commands.Cog):
                     english += ' '
 
                 else:               
-                    with open("Data\Morse.json", "r") as f:
+                    with open("Data/Morse.json", "r") as f:
                         MORSE_CODE = json.load(f)
 
                     english += list(MORSE_CODE.keys())[list(MORSE_CODE.values()).index(citext)]
@@ -71,7 +71,7 @@ class Translate(commands.Cog):
         invalid = False
         english = english.upper()
         for letter in english:
-            if letter not in "ABCDEFGHIJKLMNOP()?/,.1234567890- ":
+            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?/,.1234567890- ":
                 invalid = True
         if(invalid):
             raise commands.BadArgument
@@ -82,7 +82,7 @@ class Translate(commands.Cog):
     async def MorseToEnglish(self, ctx, *, Morse):
         invalid = False
         for letter in Morse:
-            if letter in "ABCDEFGHIJKLMNOP()?/,1234567890}{[]*&^%$#@!~\|<>:;`":
+            if letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?/,1234567890}{[]*&^%$#@!~\|<>:;`":
                 invalid = True
         if(invalid):
             raise commands.BadArgument
