@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
      client = commands.Bot(command_prefix = get_prefix)
      
-     filenames = os.listdir("DiscordBot\data")
+     filenames = os.listdir("DiscordBot\Data")
 
      @client.event
      async def on_guild_join(guild):
@@ -73,7 +73,7 @@ if __name__ == "__main__":
                for guild in client.guilds:
                     for channel in guild.channels:
                          if str(channel) == "general":
-                              pathname = os.path.join("data", filenames[0])
+                              pathname = os.path.join("Data", filenames[0])
                               with open(pathname, "r") as f:
                                    await channel.send(random.choice(f.read().splitlines()))
           
