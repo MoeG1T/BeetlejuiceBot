@@ -36,7 +36,6 @@ def get_prefix(client, message):
 
 if __name__ == "__main__":
      
-     print(os.getcwd())
      client = commands.Bot(command_prefix = get_prefix)
 
      @client.event
