@@ -72,7 +72,7 @@ if __name__ == "__main__":
                     for channel in guild.channels:
                          if str(channel) == "general":
                              
-                              with open(f'data\BeetRandomMsgz.txt',"r", encoding="utf-8") as f:
+                              with open(f'C:/Users/lubna/DiscordBot/data/BeetRandomMsgz.txt',"r", encoding="utf-8") as f:
                                    await channel.send(random.choice(f.read().splitlines()))
           except (OSError, IOError) as e:
                print(e)
