@@ -63,8 +63,8 @@ if __name__ == "__main__":
           change_game_status.start()
           Beet_Messages.start()
           print("Cuppa Army General At Your Service")
-
-     @tasks.loop(minutes=300)
+     
+     @tasks.loop(minutes=500)
      async def Beet_Messages():
           try:
                for guild in client.guilds:
@@ -79,6 +79,7 @@ if __name__ == "__main__":
      @client.event
      async def on_message(msg):
           try:
+               #dismiss messages with command prefix at the start
                if msg.content.startswith("!"):
                     await client.process_commands(msg)
                     return
@@ -88,20 +89,20 @@ if __name__ == "__main__":
 
                if msg.author.bot: 
                     return
-                    
-               if any(word.lower() in msg.content.lower() for word in Greetings):
+
+               if any(word.lower() in msg.content.lower() and len(word) ==  len(msg.content.lower()) for word in Greetings):
                     time.sleep(1)
                     await msg.channel.send(random.choice(Greetings))
 
-               if any(word.lower() in msg.content.lower() for word in GoodByes):
+               if any(word.lower() in msg.content.lower() and len(word) ==  len(msg.content.lower())for word in GoodByes):
                     time.sleep(1)
                     await msg.channel.send(random.choice(GoodByes))
 
                swearwords= []
                with open("Data/SwearWords.txt","r") as f:
                     swearwords = f.read().splitlines()
-
-               if any(word in msg.content.lower() for word in swearwords):
+               #detect profanity 
+               if any(word in msg.content.lower() and len(word) ==  len(msg.content.lower()) for word in swearwords):
                     with open("Data/Replies.txt","r") as w:
                          time.sleep(1)
                          await msg.channel.send(random.choice(w.read().splitlines()))

@@ -8,6 +8,10 @@ import json
 import urllib.request
 import re
 import random
+from selenium import webdriver
+import time
+import urllib.request
+import requests
 
 class Media(commands.Cog):
 
@@ -21,9 +25,8 @@ class Media(commands.Cog):
         results = re.findall(r"watch\?v=(\S{11})", html.read().decode())
    
         await ctx.send("https://www.youtube.com/watch?v=" + results[0])
-
-
-
+    
+            
 
 def setup(client):
     client.add_cog(Media(client))

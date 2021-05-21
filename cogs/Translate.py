@@ -35,7 +35,7 @@ class Translate(commands.Cog):
             if letter != ' ':
                 Morse += MORSE_CODE[letter] + ' '
             else:
-                Morse += ' '
+                Morse += '/'
   
         return Morse
   
@@ -48,13 +48,10 @@ class Translate(commands.Cog):
         citext = ''
     
         for letter in message:
-            if (letter != ' '):
-                i = 0
+            if (letter != ' ' or letter != '/'):
                 citext += letter
             else:
-                i += 1
-                
-                if i == 2 :  
+                if letter == '/' :  
                     english += ' '
 
                 else:               
