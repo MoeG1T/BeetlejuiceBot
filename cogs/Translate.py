@@ -53,7 +53,7 @@ class Translate(commands.Cog):
                 citext += letter
             else:
                 #add space
-                if letter == '/' :  
+                if letter == ' / ' :  
                     english += ' '
                 #new letter
                 else:               
