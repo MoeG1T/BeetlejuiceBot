@@ -81,7 +81,7 @@ class Translate(commands.Cog):
     async def MorseToEnglish(self, ctx, *, Morse):
         invalid = False
         for letter in Morse:
-            if letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?/,1234567890}{[]*&^%$#@!~\|<>:;`":
+            if letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?,1234567890}{[]*&^%$#@!~\|<>:;`":
                 invalid = True
         if(invalid):
             raise commands.BadArgument
