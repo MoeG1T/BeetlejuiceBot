@@ -4,14 +4,10 @@
 
 import discord
 from discord.ext import commands
-import json
 import urllib.request
 import re
-import random
-from selenium import webdriver
-import time
-import urllib.request
-import requests
+
+
 
 class Media(commands.Cog):
 
