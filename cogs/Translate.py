@@ -35,7 +35,8 @@ class Translate(commands.Cog):
             if letter != ' ':
                 Morse += MORSE_CODE[letter] + ' '
             else:
-                Morse += '/'
+                #space between morse letters
+                Morse += ' / '
   
         return Morse
   
@@ -51,9 +52,10 @@ class Translate(commands.Cog):
             if (letter != ' ' or letter != '/'):
                 citext += letter
             else:
+                #add space
                 if letter == '/' :  
                     english += ' '
-
+                #new letter
                 else:               
                     with open("Data/Morse.json", "r") as f:
                         MORSE_CODE = json.load(f)
