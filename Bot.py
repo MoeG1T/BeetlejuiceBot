@@ -89,20 +89,23 @@ if __name__ == "__main__":
 
                if msg.author.bot: 
                     return
-
-               if any(word.lower() in msg.content.lower() and len(word) ==  len(msg.content.lower()) for word in Greetings):
+               
+               #detect greeting and reply to them
+               if any(word.lower() in msg.content.lower().split() for word in Greetings):
                     time.sleep(1)
                     await msg.channel.send(random.choice(Greetings))
-
-               if any(word.lower() in msg.content.lower() and len(word) ==  len(msg.content.lower())for word in GoodByes):
+               
+               #detects goodbyes
+               if any(word.lower() in msg.content.lower().split() for word in GoodByes):
                     time.sleep(1)
                     await msg.channel.send(random.choice(GoodByes))
 
                swearwords= []
                with open("Data/SwearWords.txt","r") as f:
                     swearwords = f.read().splitlines()
+               
                #detect profanity 
-               if any(word in msg.content.lower() and len(word) ==  len(msg.content.lower()) for word in swearwords):
+               if any(word in msg.content.lower().split() for word in swearwords):
                     with open("Data/Replies.txt","r") as w:
                          time.sleep(1)
                          await msg.channel.send(random.choice(w.read().splitlines()))
