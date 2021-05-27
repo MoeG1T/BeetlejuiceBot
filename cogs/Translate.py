@@ -70,7 +70,7 @@ class Translate(commands.Cog):
         invalid = False
         english = english.upper()
         for letter in english:
-            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?/,.1234567890- ":
+            if letter.upper() not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?/,.1234567890- ":
                 invalid = True
         if(invalid):
             raise commands.BadArgument
@@ -81,7 +81,7 @@ class Translate(commands.Cog):
     async def MorseToEnglish(self, ctx, *, Morse):
         invalid = False
         for letter in Morse:
-            if letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?,1234567890}{[]*&^%$#@!~\|<>:;`":
+            if letter.upper() in "ABCDEFGHIJKLMNOPQRSTUVWXYZ()?,1234567890}{[]*&^%$#@!~\|<>:;`":
                 invalid = True
         if(invalid):
             raise commands.BadArgument
