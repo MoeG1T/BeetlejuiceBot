@@ -50,6 +50,9 @@ class Wikipedia(commands.Cog):
         #another table class possibility
         if(table is None):
             table = soup.find('table', class_='infobox vevent')
+
+        if(table is None):
+            table = soup.find('table', class_='infobox vcard plainlist')
             
         data_rows = table.find_all('tr')
             
