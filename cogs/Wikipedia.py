@@ -54,7 +54,7 @@ class Wikipedia(commands.Cog):
         if(table is None):
             table = soup.find('table', class_='infobox vcard plainlist')
         
-        elif (table is None):
+        if (soup is None):
             raise (commands.BadArgument)
             
         data_rows = table.find_all('tr')
@@ -75,10 +75,10 @@ class Wikipedia(commands.Cog):
 
         #sends introductory paragraph in a wikipedia site
         for i in range(len(paragraphs)):
-            paragraph = paragraphs[i].text.strip()    
+            paragraph = paragraphs[i].getText()
         
         #raise error if paragraph not found
-        if (paragraph is None):
+        if (soup is None):
             raise (commands.BadArgument)
         
         await ctx.send(paragraph)
