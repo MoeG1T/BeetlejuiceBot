@@ -36,7 +36,7 @@ class Wikipedia(commands.Cog):
         return header_value
     
     @commands.command()
-    async def wikipedia(self, ctx, *, url):
+    async def infobox(self, ctx, *, url):
         url = url.replace(" ", "_")
         url_open = requests.get("https://en.wikipedia.org/wiki/" + url)
 
@@ -65,7 +65,7 @@ class Wikipedia(commands.Cog):
             await  ctx.send(key + ' : \t' + value)
     
     @commands.command()
-    async def wiki_term(self, ctx, *, term):
+    async def description(self, ctx, *, term):
         term = term.replace(" ", "_")
         url_open = requests.get("https://en.wikipedia.org/wiki/" + term)
 
