@@ -23,6 +23,9 @@ class Media(commands.Cog):
    
         await ctx.send("https://www.youtube.com/watch?v=" + results[0])
     
+    @commands.command()
+    async def Pic(self, ctx, member: discord.Member):
+        await ctx.send('{}'.format(member.avatar_url))
             
 
 def setup(client):
