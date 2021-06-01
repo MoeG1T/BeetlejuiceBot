@@ -54,7 +54,7 @@ class Wikipedia(commands.Cog):
         if(table is None):
             table = soup.find('table', class_='infobox vcard plainlist')
         
-        if (soup is None):
+        elif (table is None):
             raise (commands.BadArgument)
             
         data_rows = table.find_all('tr')
@@ -66,22 +66,21 @@ class Wikipedia(commands.Cog):
     
     @commands.command()
     async def wiki_term(self, ctx, *, term):
-        url = url.replace(" ", "_")
-        url_open = requests.get("https://en.wikipedia.org/wiki/" + url)
+        term = term.replace(" ", "_")
+        url_open = requests.get("https://en.wikipedia.org/wiki/" + term)
 
         soup = BeautifulSoup(url_open.content, 'lxml')
 
         paragraphs = soup.find_all('p')
 
-        #sends introductory paragraph in a wikipedia site
-        for i in range(len(paragraphs)):
-            paragraph = paragraphs[i].getText()
-        
-        #raise error if paragraph not found
-        if (soup is None):
-            raise (commands.BadArgument)
-        
-        await ctx.send(paragraph)
-        
+        #sends introductory paragraph in a wikipedia site and ignores irrelevant paragraphs
+        s = 0
+        for paragraph in paragraphs:
+            if paragraph.has_attr('class') and paragraph['class'][0] == "mw-empty-elt":
+                continue
+            elif s < 1:
+                await ctx.send(paragraph.getText())
+            s += 1
+
 def setup(client):
     client.add_cog(Wikipedia(client))
