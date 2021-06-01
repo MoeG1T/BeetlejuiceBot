@@ -67,21 +67,25 @@ class Wikipedia(commands.Cog):
     
     @commands.command()
     async def description(self, ctx, *, term):
-        term = term.replace(" ", "_")
-        url_open = requests.get("https://en.wikipedia.org/wiki/" + term)
+        try:
+            term = term.replace(" ", "_")
+            url_open = requests.get("https://en.wikipedia.org/wiki/" + term)
 
-        soup = BeautifulSoup(url_open.content, 'lxml')
+            soup = BeautifulSoup(url_open.content, 'lxml')
 
-        paragraphs = soup.find_all('p')
+            paragraphs = soup.find_all('p')
 
-        #sends introductory paragraph in a wikipedia site and ignores irrelevant paragraphs
-        s = 0
-        for paragraph in paragraphs:
-            if paragraph.has_attr('class') and paragraph['class'][0] == "mw-empty-elt":
-                continue
-            elif s < 1:
-                await ctx.send(paragraph.getText())
-            s += 1
+            #sends introductory paragraph in a wikipedia site and ignores irrelevant paragraphs
+            s = 0
+            for paragraph in paragraphs:
+                if paragraph.has_attr('class') and paragraph['class'][0] == "mw-empty-elt":
+                    continue
+                elif s < 1:
+                    await ctx.send(paragraph.getText())
+                s += 1
+        
+        except:
+            raise(commands.BadArgument)
 
 def setup(client):
     client.add_cog(Wikipedia(client))
