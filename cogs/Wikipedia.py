@@ -37,32 +37,33 @@ class Wikipedia(commands.Cog):
     
     @commands.command()
     async def infobox(self, ctx, *, url):
-        url = url.replace(" ", "_")
-        url_open = requests.get("https://en.wikipedia.org/wiki/" + url)
+        try:
+            url = url.replace(" ", "_")
+            url_open = requests.get("https://en.wikipedia.org/wiki/" + url)
 
-        soup = BeautifulSoup(url_open.content, 'lxml')
+            soup = BeautifulSoup(url_open.content, 'lxml')
 
-        #try finding the info box with this class
-        table = soup.find('table', class_='infobox biography vcard')
-        #Change class name if the table has not been found
-        if(table is None):
-            table = soup.find('table', class_='infobox vcard')
-        #another table class possibility
-        if(table is None):
-            table = soup.find('table', class_='infobox vevent')
+            #try finding the info box with this class
+            table = soup.find('table', class_='infobox biography vcard')
+            #Change class name if the table has not been found
+            if(table is None):
+                table = soup.find('table', class_='infobox vcard')
+            #another table class possibility
+            if(table is None):
+                table = soup.find('table', class_='infobox vevent')
 
-        if(table is None):
-            table = soup.find('table', class_='infobox vcard plainlist')
+            if(table is None):
+                table = soup.find('table', class_='infobox vcard plainlist')
+
+            data_rows = table.find_all('tr')
+            
+            info = self.get_info(data_rows)
+            
+            for key, value in info.items():
+                await  ctx.send(key + ' : \t' + value)
         
-        elif (table is None):
-            raise (commands.BadArgument)
-            
-        data_rows = table.find_all('tr')
-            
-        info = self.get_info(data_rows)
-            
-        for key, value in info.items():
-            await  ctx.send(key + ' : \t' + value)
+        except:
+            raise(commands.BadArgument)
     
     @commands.command()
     async def description(self, ctx, *, term):
