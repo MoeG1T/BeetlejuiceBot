@@ -76,7 +76,7 @@ class Crypto(commands.Cog):
                 await ctx.send(embed = embed)
             
             else:
-                await ctx.send("Invalid coin symbol. Check !Top50 for the available coins.")
+                await ctx.send("Invalid coin symbol. Check !Top10 for the available coins.")
 
         except Exception as e:
             print(e)
