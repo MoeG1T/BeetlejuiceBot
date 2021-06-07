@@ -32,7 +32,7 @@ class Football(commands.Cog):
             await ctx.send("Available Leagues:" + "\t La Liga" + "\t Ligue 1" + "\t Premiere League" + "\t Bundesliga" + "\t Serie A" + "\t Eredivisie" + "\t Russian Premier League" + "\t English Championship")
 
     @commands.command()
-    async def Top(self, ctx, *, league):
+    async def TopScorer(self, ctx, *, league):
         try:
             data = Leagues(league)
             top = data.get_top_scorer()
