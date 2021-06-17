@@ -168,10 +168,9 @@ if __name__ == "__main__":
 
           await ctx.send(embed=embed)
      
-     @help.command(aliases = ['MorseToEnglish', 'EnglishToMorse'])
+     @help.command(aliases = ['EnglishToMorse'])
      async def translate(ctx):
           embed = discord.Embed(title="MorseToEnglish, EnglishToMorse and translate", description = "Translation Commands", color=ctx.author.color)
-          embed.add_field(name = "MorseToEnglish", value="<prefix>MorseToEnglish <text>", inline=False)
           embed.add_field(name = "EnglishToMorse", value="<prefix>EnglishToMorse <text>", inline=False)
           embed.add_field(name = "translate", value="<prefix>translate <language abbreviation> <text>", inline=False)
 
