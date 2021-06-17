@@ -130,7 +130,7 @@ if __name__ == "__main__":
           embed.add_field(name = "Crypto", value="Coin" +"\n"+ "Top10")
           embed.add_field(name = "Football", value="Table" +"\n"+ "TopScorer")
           embed.add_field(name = "Media", value="Youtube" +"\n"+ "Pic")
-          embed.add_field(name = "Translate", value="translate" +"\n"+ "MorseToEnglish" +"\n"+ "EnglishToMorse")
+          embed.add_field(name = "Translate", value="translate" +"\n"+ "EnglishToMorse")
           embed.add_field(name = "Wikipedia", value="description" +"\n"+ "infobox")
 
           await ctx.send(embed=embed)
