@@ -1,0 +1,82 @@
+{
+	"appVersion": "2.3.0",
+	"ignores": [],
+	"includePaths": [],
+	"locales": "en_us",
+	"minimizeToTray": true,
+	"minimizeOnStartup": false,
+	"notifyOnCompleted": false,
+	"autoCompileOnAdd": true,
+	"useCustomRuby": false,
+	"rubyCommandPath": "",
+	"compilers": {
+		"less": {
+			"options": {
+				"sourceMap": false,
+				"lineComments": false,
+				"debugInfo": false,
+				"strictMath": false,
+				"strictUnits": false,
+				"autoprefix": false,
+				"autoprefixConfig": "",
+				"outputStyle": ""
+			},
+			"advanced": {
+				"useCommand": false,
+				"commandPath": ""
+			}
+		},
+		"sass": {
+			"options": {
+				"compass": false,
+				"sourceMap": true,
+				"lineComments": false,
+				"debugInfo": false,
+				"unixNewlines": false,
+				"autoprefix": false,
+				"autoprefixConfig": "",
+				"outputStyle": "nested"
+			},
+			"advanced": {
+				"useSassCommand": false,
+				"sassCommandPath": ""
+			}
+		},
+		"compass": {
+			"options": {},
+			"advanced": {
+				"useCompassCommand": false,
+				"compassCommandPath": ""
+			}
+		},
+		"coffee": {
+			"options": {
+				"sourceMap": false,
+				"bare": false,
+				"literate": false
+			},
+			"advanced": {
+				"useCommand": false,
+				"commandPath": ""
+			}
+		},
+		"uglifyjs": {
+			"options": {
+				"compress": true,
+				"comments": false,
+				"harmony": false
+			},
+			"advanced": {}
+		},
+		"cssmin": {
+			"options": {
+				"combineImport": true,
+				"appendTimestamp": false,
+				"autoprefix": false,
+				"autoprefixConfig": "",
+				"outputStyle": "yuicompress"
+			},
+			"advanced": {}
+		}
+	}
+}
