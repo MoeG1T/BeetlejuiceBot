@@ -1,2 +1,3 @@
 # Beetlejuice
-Discord Bot with many features
+Discord bot with useful and interactive features.
+ Based on the character of the famous comedian Beetlejuice
