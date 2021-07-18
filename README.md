@@ -5,7 +5,7 @@ Discord bot with useful and interactive features.
 ![Capture](https://user-images.githubusercontent.com/79432932/126067521-ca0def8e-7b2c-4aa6-9334-c9ffc447dc68.PNG)
 
 # Moderation
-Moderation commands allow admins to ban, unban and change the default prefix (!)
+Moderation commands allow admins to ban, unban and change the default prefix (!).
 
 # Crypto
 Crypto commands use CoinMarketCap API to get Cryptocurrencies' information.
