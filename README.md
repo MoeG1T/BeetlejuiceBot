@@ -16,4 +16,6 @@ Crypto commands use CoinMarketCap API to get Cryptocurrencies' information.
 Football commands allow users to see a league's latest table and top scorer.
 
 ![image](https://user-images.githubusercontent.com/79432932/126068569-801ebb85-129d-4022-88cf-a1de2878015a.png)
+![image](https://user-images.githubusercontent.com/79432932/126068688-72baeb1d-903b-4f14-8241-a8f5be04b9dd.png)
+
 
