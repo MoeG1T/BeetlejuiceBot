@@ -5,5 +5,15 @@ Discord bot with useful and interactive features.
 ![Capture](https://user-images.githubusercontent.com/79432932/126067521-ca0def8e-7b2c-4aa6-9334-c9ffc447dc68.PNG)
 
 # Moderation
-![image](https://user-images.githubusercontent.com/79432932/126067895-dc288733-6ecf-4054-a82c-27d1afbe426e.png)
+Moderation commands allow admins to ban, unban and change the default prefix (!)
+
+# Crypto
+Crypto commands use CoinMarketCap API to get Cryptocurrencies' information.
+
+![image](https://user-images.githubusercontent.com/79432932/126068178-acb13f19-bb3c-4a9e-ba42-2117802c52ee.png)
+
+# Football
+Football commands allow users to see a league's latest table and top scorer.
+
+![image](https://user-images.githubusercontent.com/79432932/126068569-801ebb85-129d-4022-88cf-a1de2878015a.png)
 
