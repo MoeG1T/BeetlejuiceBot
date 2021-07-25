@@ -21,7 +21,6 @@ Using SoccerDataAPI, Football commands allow users to see a league's latest tabl
 # Media
 Pic command returns a user's display picture. Youtube command returns a YouTube video, using urllib.request.
 
-![3](https://user-images.githubusercontent.com/79432932/126179597-87382aa8-a724-4212-af35-717b5dd61617.PNG)
 
 # Translate
 translate command allows users to translate text to a certain language, by using Googletrans python library. Similarly, EnglishToMorse translates English text to Morse code.
