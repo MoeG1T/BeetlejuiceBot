@@ -29,7 +29,7 @@ translate command allows users to translate text to a certain language, by using
 ![5](https://user-images.githubusercontent.com/79432932/126183357-1b0e8a92-4421-4307-a3e2-7eaed7824175.PNG)
 
 # Wikipedia
-Wikipedia commands use BeautifulSoup to scrape descriptions and infoboxes.
+Wikipedia commands use BeautifulSoup to scrape descriptions and infoboxes from Wikipedia.
 
 ![6](https://user-images.githubusercontent.com/79432932/126185848-0a6a553b-e433-4749-9eb2-4f73454e64d5.PNG)
 ![7](https://user-images.githubusercontent.com/79432932/126185788-31a39235-11ef-4720-85b9-c6c0278affc6.PNG)
