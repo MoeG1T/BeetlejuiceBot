@@ -35,8 +35,6 @@ Wikipedia commands use BeautifulSoup to scrape descriptions and infoboxes from W
 ![126185788-31a39235-11ef-4720-85b9-c6c0278affc6](https://user-images.githubusercontent.com/79432932/140011950-f4ec8e61-cb14-4598-84e2-f289c3ac7686.png)
 ![126185814-91c31f40-a0c0-4b61-935b-73a16b809296](https://user-images.githubusercontent.com/79432932/140011964-40b00a09-a883-4cb6-bc78-40d8dd45e21c.png)
 
-# Usage
-Use this link to add Beetlejuice to your server. https://discord.com/oauth2/authorize?client_id=825567236940496927&permissions=8&scope=bot&fbclid=IwAR1RHq9CxrrAvthV-KhzwsrAS9gvFF5IJPO_nIWrXHZCKpMQ13eRJOhdH7w.
 
 
 
