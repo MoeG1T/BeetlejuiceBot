@@ -62,20 +62,7 @@ if __name__ == "__main__":
      @client.event
      async def on_ready():
           change_game_status.start()
-          Beet_Messages.start()
           print("Cuppa Army General At Your Service")
-     
-     @tasks.loop(minutes=500)
-     async def Beet_Messages():
-          try:
-               for guild in client.guilds:
-                    for channel in guild.channels:
-                         if str(channel) == "general":
-                              with open("Data/BeetRandomMsgz.txt", "r") as f:
-                                   await channel.send(random.choice(f.read().splitlines()))
-          
-          except (OSError, IOError) as e:
-               print(e)
 
      @client.event
      async def on_message(msg):
