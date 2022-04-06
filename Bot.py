@@ -89,7 +89,7 @@ if __name__ == "__main__":
                     await msg.channel.send(random.choice(GoodByes))
 
                swearwords= []
-               with open("Data/SwearWords.txt","r") as f:
+               with open("Data/profanity.txt","r") as f:
                     swearwords = f.read().splitlines()
                
                #detect profanity 
